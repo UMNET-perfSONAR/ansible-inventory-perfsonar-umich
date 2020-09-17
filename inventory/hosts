@@ -1,0 +1,106 @@
+# This is an Ansible inventory file in INI format. You can define a list of
+# hosts and groups to be managed by this particular inventory.
+#
+# Connection information can be added to groups, more information is
+# documented at: 
+# https://docs.ansible.com/ansible/latest/user_guide/intro_inventory.html
+#
+# A way to check that all of your expected hosts are accessable is:
+# ansible all -m ping --ask-become-pass
+#
+# Full perfSONAR hosts inventory grouped by installation bundle
+[all:vars]
+ansible_become=True
+ansible_become_user=root
+ansible_become_method=su
+#
+# passwords can be encrypted via ansible-vault
+# ansible-vault encrypt_string --stdin-name=ansible_become_password
+
+[ps-testpoints]
+perfsonar-bin-arbl.umnet.umich.edu
+perfsonar-bin-seb.umnet.umich.edu
+perfsonar-core-cool.umnet.umich.edu
+perfsonar-core-lsa.umnet.umich.edu
+perfsonar-core-fxb.umnet.umich.edu
+perfsonar-core-seb.umnet.umich.edu
+perfsonar-dc-macc.umnet.umich.edu
+perfsonar.miserver.it.umich.edu
+test10g.lsi.umich.edu
+207.74.194.242
+52.80.186.8
+
+[ps-toolkits]
+
+[ps-archives]
+perfsonar-archive.miserver.it.umich.edu
+
+[ps-maddash]
+perfsonar-maddash.miserver.it.umich.edu
+
+[ps-psconfig-publishers]
+perfsonar-ma.miserver.it.umich.edu
+
+[ps-psconfig-web-admin]
+perfsonar-webadmin.miserver.it.umich.edu
+
+# #######################
+
+[ps-testpoints-aws:vars]
+ansible_become_method=sudo
+
+[ps-testpoints-aws]
+52.80.186.8
+
+[ps-testpoints-core]
+perfsonar-bin-arbl.umnet.umich.edu
+perfsonar-bin-seb.umnet.umich.edu
+perfsonar-core-cool.umnet.umich.edu
+perfsonar-core-lsa.umnet.umich.edu
+perfsonar-core-fxb.umnet.umich.edu
+perfsonar-core-seb.umnet.umich.edu
+perfsonar-dc-macc.umnet.umich.edu
+perfsonar.miserver.it.umich.edu
+test10g.lsi.umich.edu
+
+[dells]
+perfsonar-bin-arbl.umnet.umich.edu
+perfsonar-bin-seb.umnet.umich.edu
+perfsonar-core-cool.umnet.umich.edu
+perfsonar-core-lsa.umnet.umich.edu
+perfsonar-core-fxb.umnet.umich.edu
+perfsonar-core-seb.umnet.umich.edu
+perfsonar-dc-macc.umnet.umich.edu
+
+[dells:vars]
+ansible_become=True
+ansible_become_method=su
+ansible_become_user=root
+
+[webservers]
+perfsonar-ma.miserver.it.umich.edu
+perfsonar-maddash.miserver.it.umich.edu
+perfsonar-webadmin.miserver.it.umich.edu
+
+[lsi]
+test10g.lsi.umich.edu
+
+[lsi:vars]
+ansible_become=True
+ansible_become_method=su
+ansible_become_user=root
+
+[miservers]
+perfsonar-ma.miserver.it.umich.edu
+perfsonar-maddash.miserver.it.umich.edu
+perfsonar-archive.miserver.it.umich.edu
+perfsonar-webadmin.miserver.it.umich.edu
+perfsonar.miserver.it.umich.edu
+
+[miservers:vars]
+ansible_become=True
+ansible_become_method=sudo
+ansible_become_user=root
+
+[nanopis]
+207.74.194.242

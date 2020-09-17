@@ -1,0 +1,22 @@
+# umich_perfsonar_core.yml main perfSONAR config
+
+- name: perfSONAR archives
+  tags: archives
+  hosts: ps-archives
+  tasks:
+    - name: ps-archives
+      debug:
+        var: groups['ps-archives']
+
+
+- name: perfSONAR MadDash
+  tags: maddash
+  hosts: ps-maddash
+  tasks:
+    - name: ps-maddash
+      debug:
+        var: groups['ps-maddash']
+    - name: change maddash throughput graph scale for 10GB networks
+      command: > 
+        psconfig maddash-grid edit --name default_throughput
+        --check-critical-threshold 6 --check-warning-threshold 9

@@ -1,0 +1,105 @@
+---
+# defaults file for perfsonar-psconfig-web-admin
+
+# set to yes to pull most recent images
+perfsonar_pwa_docker_pull_image: yes
+perfsonar_pwa_docker_config_dir: /etc/docker
+perfsonar_pwa_docker_data_root: /usr/local
+perfsonar_pwa_docker_network: pwa
+perfsonar_pwa_cert_path: /etc/pwa/nginx/certs
+perfsonar_pwa_email_address: <email_address>
+perfsonar_pwa_selinux_disable: True
+perfsonar_pwa_fqdn: "{{ inventory_hostname }}"
+
+# perfsonar_psconfig_publish_remote_agents: "{{ groups['ps-maddash'] }}
+#     + {{ groups['ps-toolkits'] }}
+#     + {{ groups['ps-testpoints'] }}"
+
+# 
+# This section is for managing PWA local user accounts.
+#
+# If perfsonar_pwa_user_default_domain is set, any account created without
+# an email address expressly defined will use
+# `username@perfsonar_pwa_user_default_domain` by default.
+#
+perfsonar_pwa_user_default_domain: umich.edu
+
+# When perfsonar_pwa_user_purge is True, accounts not listed in
+# perfsonar_pwa_user_list will be deleted.
+#
+perfsonar_pwa_user_purge: True
+
+# Accounts REQUIRE:
+#   - username
+#   - fullname
+#   - EITHER email OR perfsonar_pwa_user_default_domain defined
+perfsonar_pwa_user_list:
+#  - username:
+#    fullname:
+#    email:
+#    password:
+#    password_reset: True
+#    scope: ['user', 'admin']
+
+# perfSONAR team
+  - username: epcjr
+    fullname: Edward Colone
+    scope: ['user', 'admin']
+
+# UMNet Admin Team
+  - username: abscott
+    fullname: Anthony B Scott
+  - username: rharolde
+    fullname: Bob Harold
+  - username: craigmax
+    fullname: Craig Maxfield
+  - username: dbonder
+    fullname: Darin M Bonder
+  - username: edye
+    fullname: Edward A Dye
+  - username: jabedan
+    fullname: James B Daniels
+  - username: khashemi
+    fullname: Kamal Alhashemi
+  - username: ganglu
+    fullname: Laine Lu
+  - username: jmd
+    fullname: Mark Driscoll
+  - username: stroudm
+    fullname: Martin Stroud
+  - username: mbear
+    fullname: Michael D Bear
+  - username: nokika
+    fullname: Nonso Okika
+  - username: rexc
+    fullname: Rex Chang
+  - username: regray
+    fullname: Ryan Gray
+  - username: smurph
+    fullname: Sean Alan Murphy
+  - username: jklaas
+    fullname: James Thomas Klaas
+
+# ITCom Network Engineering
+  - username: amylieb
+    fullname: Amy Liebowitz
+  - username: dok
+    fullname: Dan Kirkland
+  - username: eklund
+    fullname: Daniel Eklund
+  - username: ericboyd
+    fullname: Eric Boyd
+  - username: jarhelz
+    fullname: James A Helzerman
+  - username: jhehnlin
+    fullname: Justin Hehnlin
+  - username: grundler
+    fullname: Nicholas Joseph Grundler
+  - username: bourquin
+    fullname: Richard Bourquin
+  - username: rguzmanl
+    fullname: Roberto Guzman
+  - username: thicks
+    fullname: Thomas J Hicks
+  - username: waltr
+    fullname: Walt Reynolds

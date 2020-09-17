@@ -1,0 +1,18 @@
+perfsonar_psconfig_remote_remotes:
+  - url: http://mca-nightly.grnoc.iu.edu/pub/config/testbed-nightly?format=psconfig
+    configure_archives: True
+    state: present
+
+psconfig_remotes_test:
+  - configure_archives: True
+    state: present
+  - url: http://www.umich.edu
+    configure_archives: True
+    state: absent
+  - url: http://add.me.com
+  - url: http://mca-nightly.grnoc.iu.edu/pub/config/testbed-nightly?format=psconfig
+    configure_archives: True
+    state: notwell
+  - url: http://mca-nightly.grnoc.iu.edu/pub/config/testbed-nightly?format=psconfig
+    configure_archives: True
+    state: present
